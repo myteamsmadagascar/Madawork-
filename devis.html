@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demande de devis - Madawork</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0a1030;
+color:#fff;
+}
+
+header{
+display:flex;
+justify-content:center;
+padding:15px;
+background:#050816;
+}
+
+header img{
+height:45px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+padding:20px;
+}
+
+form{
+background:#111842;
+padding:20px;
+border-radius:15px;
+}
+
+h2{
+text-align:center;
+color:#ff9900;
+}
+
+input, select, textarea{
+width:100%;
+padding:12px;
+margin-bottom:10px;
+border-radius:10px;
+border:none;
+}
+
+textarea{
+height:100px;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#1f6bff;
+color:#fff;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff9900;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:12px 15px;
+border-radius:50px;
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.png">
+</header>
+
+<div class="container">
+
+<form action="https://formsubmit.co/myteamsmadagascar@gmail.com" method="POST">
+
+<h2>Demander un devis</h2>
+
+<input type="text" name="Nom" placeholder="Nom / Entreprise" required>
+
+<input type="email" name="Email" placeholder="Email" required>
+
+<input type="tel" name="Téléphone" placeholder="Téléphone">
+
+<select name="Offre" required>
+<option value="">Choisir une offre</option>
+<option>Offre 199.000Ar (site vitrine une page)</option>
+<option>Site professionnel à partir de 500.000Ar</option>
+<option>Demande de devis personnalisé</option>
+<option>CRM gestion client à partir de 1.000.000Ar/an</option>
+</select>
+
+<textarea name="Message" placeholder="Décrivez votre projet"></textarea>
+
+<!-- CONFIG FORMSUBMIT -->
+<input type="hidden" name="_subject" value="Nouvelle demande devis Madawork">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://madawork.com/merci.html">
+
+<button type="submit">Envoyer la demande</button>
+
+</form>
+
+</div>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/261332943007">
+WhatsApp
+</a>
+
+</body>
+</html>

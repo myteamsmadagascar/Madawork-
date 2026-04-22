@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madawork - Offres</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:Arial;
+background:#0a1030;
+color:#fff;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 15px;
+background:#050816;
+}
+
+header img{height:40px;}
+header a{color:#fff;text-decoration:none;font-size:13px;margin-left:10px;}
+
+/* SLIDER */
+.slider{
+display:flex;
+transition:.4s;
+}
+
+.slide{
+min-width:100%;
+padding:15px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.slide img{
+width:100%;
+max-width:420px;
+border-radius:15px;
+cursor:pointer;
+}
+
+/* CARD */
+.card{
+background:#111842;
+margin-top:15px;
+padding:15px;
+border-radius:15px;
+width:100%;
+max-width:420px;
+}
+
+.card h3{color:#ff9900;margin-bottom:10px;}
+
+table{width:100%;font-size:13px;}
+td{padding:6px;border-bottom:1px solid rgba(255,255,255,.1);}
+
+/* NAV DOTS */
+.nav{text-align:center;margin:10px;}
+.nav button{
+width:10px;height:10px;border-radius:50%;
+border:none;margin:5px;background:#fff;opacity:.4;
+}
+.nav .active{opacity:1;background:#ff9900;}
+
+/* ZOOM */
+.zoom{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.zoom img{max-width:95%;max-height:95%;}
+
+.close{
+position:absolute;
+top:20px;
+right:20px;
+background:#ff9900;
+border:none;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* CTA */
+.cta{text-align:center;padding:15px;}
+
+.btn{
+display:inline-block;
+margin:5px;
+padding:12px 15px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.primary{background:#1f6bff;color:#fff;}
+.secondary{background:#ff9900;color:#fff;}
+.facebook{background:#1877f2;color:#fff;}
+.whatsapp-btn{background:#25D366;color:#fff;}
+
+/* FORM */
+.form-box{
+background:#111842;
+max-width:500px;
+margin:20px auto;
+padding:20px;
+border-radius:15px;
+}
+
+.form-box input,.form-box textarea{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:10px;
+border-radius:10px;
+border:none;
+}
+
+/* FOOTER */
+footer{text-align:center;font-size:12px;padding:15px;background:#050816;}
+
+/* WHATSAPP FLOAT */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+padding:12px 15px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+/* RESPONSIVE */
+@media(min-width:900px){
+.slider{max-width:900px;margin:auto;}
+.slide{flex-direction:row;gap:20px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.png">
+<div>
+<a href="https://madawork.com">Site</a>
+<a href="https://portail.madawork.com">Portail</a>
+</div>
+</header>
+
+<!-- SLIDER -->
+<div class="slider" id="slider">
+
+<!-- OFFRE 1 -->
+<div class="slide">
+<img src="offre1.jpg" onclick="zoom(this.src)">
+<div class="card">
+<h3>Offre 199.000Ar (site + Page Facebook)</h3>
+<p>✔ Site vitrine une page<br>✔ bouton WhatsApp + Facebook<br>✔ Domaine 1an + hébergement 1an </p>
+<p>✔ Page Facebook<br>✔ 1ere publication boostée<br>✔ Frais boost (à part )</p>
+<table>
+<tr><td>Durée</td><td>30 Avril 2026</td></tr>
+<tr><td>Email</td><td>option</td></tr>
+</table>
+</div>
+</div>
+
+<!-- OFFRE 2 -->
+<div class="slide">
+<img src="offre2.jpg" onclick="zoom(this.src)">
+<div class="card">
+<h3>Site Web Pro</h3>
+<p>✔ Site complet<br>✔ Formulaire<br>✔ Photos/Vidéo</p>
+<table>
+<tr><td>Prix</td><td>500.000Ar</td></tr>
+<tr><td>Délai</td><td>72h - 7j</td></tr>
+</table>
+</div>
+</div>
+
+<!-- OFFRE 3 -->
+<div class="slide">
+<img src="offre3.jpg" onclick="zoom(this.src)">
+<div class="card">
+<h3>CRM Gestion Client</h3>
+<p>✔ Statut modifiable<br>✔ Commentaire modifiable<br>✔ Suivi client</p>
+<table>
+<tr><td>Prix</td><td>1.000.000Ar/an</td></tr>
+<tr><td>Support</td><td>Inclus</td></tr>
+</table>
+</div>
+</div>
+
+<!-- OFFRE 4 -->
+<div class="slide">
+<img src="offre4.jpg" onclick="zoom(this.src)">
+<div class="card">
+<h3>Page Facebook Pro</h3>
+<p>
+✔ Création page<br>
+✔ Logo offert<br>
+✔ Slogan inclus<br>
+✔ Couverture publicitaire<br>
+✔ Optimisation page
+</p>
+<table>
+<tr><td>Prix</td><td>50.000Ar</td></tr>
+<tr><td>Délai</td><td>1 jour</td></tr>
+</table>
+</div>
+</div>
+
+</div>
+
+<!-- NAV -->
+<div class="nav">
+<button onclick="go(0)" class="active"></button>
+<button onclick="go(1)"></button>
+<button onclick="go(2)"></button>
+<button onclick="go(3)"></button>
+</div>
+
+<!-- ZOOM -->
+<div class="zoom" id="zoom">
+<button class="close" onclick="closeZoom()">Retour</button>
+<img id="zoomImg">
+</div>
+
+<!-- CTA -->
+<div class="cta">
+<p>Faites gagner du temps à vos clients</p>
+
+<a href="commande.html" class="btn primary">Commander</a>
+<a href="devis.html" class="btn secondary">Demander devis</a>
+<a href="https://web.facebook.com/MetierduwebMada" class="btn facebook">Facebook</a>
+<a href="https://wa.me/261332943007?text=Bonjour%20je%20souhaite%20des%20infos" class="btn whatsapp-btn">WhatsApp</a>
+</div>
+
+<!-- FORM -->
+<div class="form-box">
+<h3>Demande d'information</h3>
+
+<form action="https://formsubmit.co/myteamsmadagascar@gmail.com" method="POST">
+<input type="hidden" name="_captcha" value="false">
+
+<label>Nom</label>
+<input type="text" name="Nom" required>
+
+<label>Téléphone</label>
+<input type="text" name="Téléphone" required>
+
+<label>Email</label>
+<input type="email" name="Email" required>
+
+<label>Message</label>
+<textarea name="Message" required></textarea>
+
+<button class="btn primary">Envoyer</button>
+</form>
+</div>
+
+<footer>
+madawork.com | portail.madawork.com
+</footer>
+
+<a class="whatsapp" href="https://wa.me/261332943007?text=Bonjour%20Madawork">💬 WhatsApp</a>
+
+<script>
+
+let index=0;
+const slider=document.getElementById("slider");
+const dots=document.querySelectorAll(".nav button");
+
+/* NAV */
+function go(i){
+index=i;
+slider.style.transform="translateX(-"+(i*100)+"%)";
+dots.forEach(d=>d.classList.remove("active"));
+dots[i].classList.add("active");
+}
+
+/* AUTO SLIDE 7s */
+setInterval(()=>{
+index = (index + 1) % 4;
+go(index);
+},7000);
+
+/* SWIPE */
+let startX=0;
+document.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
+document.addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX;
+if(endX < startX-50 && index<3) go(index+1);
+if(endX > startX+50 && index>0) go(index-1);
+});
+
+/* ZOOM */
+function zoom(src){
+document.getElementById("zoom").style.display="flex";
+document.getElementById("zoomImg").src=src;
+}
+function closeZoom(){
+document.getElementById("zoom").style.display="none";
+}
+
+</script>
+
+</body>
+</html>

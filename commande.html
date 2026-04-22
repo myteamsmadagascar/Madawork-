@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande Madawork</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{margin:0;font-family:Arial;background:#0a1030;color:#fff;}
+.container{max-width:800px;margin:auto;padding:20px;}
+.card{background:#111842;padding:20px;border-radius:20px;}
+
+h1{text-align:center;color:#00d9ff;}
+
+label{display:block;margin-top:10px;font-weight:bold;}
+
+input,select{
+width:100%;padding:12px;border-radius:10px;border:none;margin-top:5px;margin-bottom:10px;
+}
+
+button{
+padding:14px;border:none;border-radius:10px;font-weight:bold;cursor:pointer;
+}
+
+.primary{background:#1f6bff;color:#fff;width:100%;}
+.secondary{background:#ff9900;color:#fff;width:100%;margin-top:10px;}
+
+.resume,.facture{
+background:#0f1738;padding:15px;border-radius:15px;margin-top:15px;
+}
+
+.facture table{width:100%;font-size:14px;}
+
+.whatsapp{
+position:fixed;bottom:20px;right:20px;
+background:#25D366;padding:12px 15px;border-radius:50px;color:#fff;
+text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Commande Madawork</h1>
+
+<form action="https://formsubmit.co/myteamsmadagascar@gmail.com" method="POST">
+
+<input type="hidden" name="_subject" value="Nouvelle commande Madawork">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://madawork.com/merci.html">
+
+<label>Nom du client ou Entreprise</label>
+<input type="text" id="nom" name="Nom" required>
+
+<label>Email</label>
+<input type="email" id="email" name="Email" required>
+
+<label>Téléphone</label>
+<input type="text" id="tel" name="Téléphone" required>
+
+<label>Nom de domaine souhaité</label>
+<input type="text" id="domaine" name="Nom de domaine" placeholder="ex : monentreprise.com">
+
+<label>Type</label>
+<select id="type">
+<option>Pack standard</option>
+<option>Devis personnalisé</option>
+</select>
+
+<label>Offre</label>
+<select id="pack">
+<option data-prix="0">Choisir</option>
+<option data-prix="199000">Site vitrine — 199000 Ar</option>
+<option data-prix="500000">Site web pro — à partir 500000 Ar</option>
+<option data-prix="1000000">CRM — à partir 1 000 000 Ar / an</option>
+<option data-prix="50000">Page Facebook — 50000 Ar</option>
+</select>
+
+<label>Montant défini </label>
+<input type="number" id="devis">
+
+<label>Mode de paiement</label>
+<select id="paiement" name="Paiement">
+<option>Mvola 038 19 191 34 vers FINIAVANA</option>
+<option>Orange Money 032 60 964 49vers FINIAVANA</option>
+<option>Airtel Money 033 29 430 07 vers FINIAVANA</option>
+</select>
+
+<label>Montant payé + frais de retrait</label>
+<input type="number" id="paye" required>
+
+<label>Référence transaction</label>
+<input type="text" id="ref" required>
+
+<div class="resume">
+Prix : <span id="prix">0</span> Ar<br>
+Payé : <span id="affichePaye">0</span> Ar<br>
+Reste : <span id="reste">0</span> Ar<br>
+Statut : <span id="statut">-</span>
+</div>
+
+<button type="button" class="secondary" onclick="genererFacture()">Générer reçu</button>
+<button type="button" class="secondary" onclick="genererPDF()">Télécharger PDF</button>
+
+<div class="facture">
+<h3>Reçu automatique (téléchargeable)</h3>
+<table>
+<tr><td>Nom</td><td id="fNom"></td></tr>
+<tr><td>Email</td><td id="fEmail"></td></tr>
+<tr><td>Téléphone</td><td id="fTel"></td></tr>
+<tr><td>Domaine</td><td id="fDomaine"></td></tr>
+<tr><td>Offre</td><td id="fOffre"></td></tr>
+<tr><td>Paiement</td><td id="fPaiement"></td></tr>
+<tr><td>Référence</td><td id="fRef"></td></tr>
+<tr><td>Prix</td><td id="fPrix"></td></tr>
+<tr><td>Payé</td><td id="fPaye"></td></tr>
+<tr><td>Reste</td><td id="fReste"></td></tr>
+<tr><td>Statut</td><td id="fStatut"></td></tr>
+<tr><td>Date</td><td id="fDate"></td></tr>
+</table>
+</div>
+
+<button type="submit" class="primary">Envoyer commande</button>
+
+</form>
+
+</div>
+</div>
+
+<a class="whatsapp" href="https://wa.me/261332943007">WhatsApp</a>
+
+<script>
+
+function getPrix(){
+let type=document.getElementById("type").value;
+let devis=document.getElementById("devis").value;
+
+if(type==="Devis personnalisé"){
+return Number(devis||0);
+}
+
+let pack=document.getElementById("pack");
+return Number(pack.options[pack.selectedIndex].dataset.prix||0);
+}
+
+function calcul(){
+let prix=getPrix();
+let paye=Number(document.getElementById("paye").value||0);
+
+let reste=prix-paye;
+if(reste<0) reste=0;
+
+document.getElementById("prix").innerText=prix;
+document.getElementById("affichePaye").innerText=paye;
+document.getElementById("reste").innerText=reste;
+
+let statut="Non payé";
+if(paye>0 && paye<prix) statut="Acompte";
+if(paye>=prix) statut="Payé";
+
+document.getElementById("statut").innerText=statut;
+}
+
+document.querySelectorAll("input,select").forEach(e=>{
+e.addEventListener("input",calcul);
+});
+
+function genererFacture(){
+calcul();
+
+document.getElementById("fNom").innerText=nom.value;
+document.getElementById("fEmail").innerText=email.value;
+document.getElementById("fTel").innerText=tel.value;
+document.getElementById("fDomaine").innerText=domaine.value;
+document.getElementById("fOffre").innerText=pack.value;
+document.getElementById("fPaiement").innerText=paiement.value;
+document.getElementById("fRef").innerText=ref.value;
+
+document.getElementById("fPrix").innerText=prix.innerText+" Ar";
+document.getElementById("fPaye").innerText=affichePaye.innerText+" Ar";
+document.getElementById("fReste").innerText=reste.innerText+" Ar";
+document.getElementById("fStatut").innerText=statut.innerText;
+
+document.getElementById("fDate").innerText=new Date().toLocaleString();
+}
+
+function genererPDF(){
+genererFacture();
+
+const {jsPDF}=window.jspdf;
+let doc=new jsPDF();
+
+doc.text("RECU MADAWORK",20,20);
+doc.text("Nom : "+fNom.innerText,20,30);
+doc.text("Email : "+fEmail.innerText,20,40);
+doc.text("Tel : "+fTel.innerText,20,50);
+doc.text("Domaine : "+fDomaine.innerText,20,60);
+doc.text("Offre : "+fOffre.innerText,20,70);
+doc.text("Paiement : "+fPaiement.innerText,20,80);
+doc.text("Ref : "+fRef.innerText,20,90);
+doc.text("Prix : "+fPrix.innerText,20,100);
+doc.text("Payé : "+fPaye.innerText,20,110);
+doc.text("Reste : "+fReste.innerText,20,120);
+doc.text("Statut : "+fStatut.innerText,20,130);
+
+doc.save("recu-madawork.pdf");
+}
+
+</script>
+
+</body>
+</html>

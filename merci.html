@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merci pour votre commande</title>
+  <style>
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      font-family:Arial, Helvetica, sans-serif;
+      color:#eef4ff;
+      background:
+        radial-gradient(circle at top left, rgba(76,127,255,.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0,255,255,.12), transparent 25%),
+        linear-gradient(135deg,#07111f,#0c1830,#111d40,#0a1022);
+      overflow:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:40px 40px;
+      pointer-events:none;
+      opacity:.25;
+    }
+
+    .box{
+      position:relative;
+      z-index:1;
+      width:100%;
+      max-width:700px;
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:28px;
+      padding:40px 28px;
+      text-align:center;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .icon{
+      width:88px;
+      height:88px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:40px;
+      background:linear-gradient(135deg,#00c896,#0fe3b2);
+      color:white;
+      box-shadow:0 0 25px rgba(15,227,178,.35);
+      animation:pulse 1.8s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1);box-shadow:0 0 0 0 rgba(15,227,178,.35)}
+      70%{transform:scale(1.03);box-shadow:0 0 0 18px rgba(15,227,178,0)}
+      100%{transform:scale(1);box-shadow:0 0 0 0 rgba(15,227,178,0)}
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:34px;
+      color:#ffffff;
+      animation:glowText 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowText{
+      from{
+        text-shadow:0 0 8px rgba(255,255,255,.18), 0 0 18px rgba(120,170,255,.15);
+      }
+      to{
+        text-shadow:0 0 14px rgba(255,255,255,.4), 0 0 30px rgba(0,255,255,.22);
+      }
+    }
+
+    p{
+      margin:0;
+      line-height:1.8;
+      font-size:17px;
+      color:#dbe7ff;
+    }
+
+    .actions{
+      margin-top:28px;
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:700;
+      text-decoration:none;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#1f4fd8,#3f83ff);
+      color:#fff;
+      box-shadow:0 12px 28px rgba(31,79,216,.25);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.1);
+      color:#dce8ff;
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    @media (max-width:640px){
+      .box{
+        padding:32px 20px;
+      }
+      h1{
+        font-size:28px;
+      }
+      p{
+        font-size:15px;
+      }
+      .actions{
+        flex-direction:column;
+      }
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="icon">✓</div>
+    <h1>Merci pour votre commande</h1>
+    <p>
+      Votre formulaire a bien été envoyé avec succès.<br>
+      Notre équipe vous recontactera dès que possible.
+    </p>
+
+    <div class="actions">
+      <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
+      <a href="commande.html" class="btn btn-secondary">Nouvelle commande</a>
+    </div>
+  </div>
+</body>
+</html>
