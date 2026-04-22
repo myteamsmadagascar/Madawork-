@@ -20,9 +20,7 @@ padding:15px;
 background:#050816;
 }
 
-header img{
-height:45px;
-}
+header img{height:45px;}
 
 .container{
 max-width:600px;
@@ -34,11 +32,13 @@ form{
 background:#111842;
 padding:20px;
 border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
 
 h2{
 text-align:center;
 color:#ff9900;
+margin-bottom:15px;
 }
 
 input, select, textarea{
@@ -47,11 +47,10 @@ padding:12px;
 margin-bottom:10px;
 border-radius:10px;
 border:none;
+font-size:14px;
 }
 
-textarea{
-height:100px;
-}
+textarea{height:100px;}
 
 button{
 width:100%;
@@ -64,20 +63,26 @@ font-weight:bold;
 cursor:pointer;
 }
 
-button:hover{
-background:#ff9900;
-}
+button:hover{background:#ff9900;}
 
 .whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-padding:12px 15px;
+padding:12px 16px;
 border-radius:50px;
 color:#fff;
 text-decoration:none;
 font-weight:bold;
+}
+
+.info{
+background:#0f1738;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+font-size:13px;
 }
 </style>
 </head>
@@ -90,22 +95,25 @@ font-weight:bold;
 
 <div class="container">
 
-<form action="https://formsubmit.co/myteamsmadagascar@gmail.com" method="POST">
+<form action="https://formsubmit.co/madawork.centre@gmail.com" method="POST">
 
 <h2>Demander un devis</h2>
 
+<div class="info">
+Réponse rapide sous 24h 🚀
+</div>
+
 <input type="text" name="Nom" placeholder="Nom / Entreprise" required>
-
 <input type="email" name="Email" placeholder="Email" required>
-
-<input type="tel" name="Téléphone" placeholder="Téléphone">
+<input type="tel" name="Téléphone" placeholder="Téléphone" required>
 
 <select name="Offre" required>
 <option value="">Choisir une offre</option>
-<option>Offre 199.000Ar (site vitrine une page)</option>
-<option>Site professionnel à partir de 500.000Ar</option>
-<option>Demande de devis personnalisé</option>
+<option>Site vitrine 199.000Ar</option>
+<option>Site web professionnel à partir de 500.000Ar</option>
 <option>CRM gestion client à partir de 1.000.000Ar/an</option>
+<option>Création page Facebook 50.000Ar</option>
+<option>Devis personnalisé</option>
 </select>
 
 <textarea name="Message" placeholder="Décrivez votre projet"></textarea>
@@ -113,6 +121,8 @@ font-weight:bold;
 <!-- CONFIG FORMSUBMIT -->
 <input type="hidden" name="_subject" value="Nouvelle demande devis Madawork">
 <input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_autoresponse" value="Merci pour votre demande. Notre équipe Madawork vous contacte rapidement.">
 <input type="hidden" name="_next" value="https://madawork.com/merci.html">
 
 <button type="submit">Envoyer la demande</button>
@@ -121,9 +131,8 @@ font-weight:bold;
 
 </div>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/261332943007">
-WhatsApp
+<a class="whatsapp" href="https://wa.me/261332943007?text=Bonjour%20Madawork%2C%20je%20souhaite%20un%20devis">
+💬 WhatsApp
 </a>
 
 </body>
